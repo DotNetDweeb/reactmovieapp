@@ -46,14 +46,14 @@ justify-content : space-between;
 `
 
 function MovieComponent(props){
-  const [searchQuery,updateSearchQuery] = useState();
+  const{Title, Year, imdbId, Type, Poster} = props.movie;
     return (
-    <MovieComponentContainer>
-      <CoverImg src="https://m.media-amazon.com/images/M/MV5BNjM0NTc0NzItM2FlYS00YzEwLWE0YmUtNTA2ZWIzODc2OTgxXkEyXkFqcGdeQXVyNTgwNzIyNzg@._V1_SX300.jpg"/> 
-      <MovieName>Guardians of the Galaxy</MovieName>
+    <MovieComponentContainer onClick={() => props.onMovieSelect(imdbId)}>
+      <CoverImg src={Poster}/> 
+      <MovieName>{Title}</MovieName>
       <InfoColumn>
-          <MovieInfo>Year : 2012</MovieInfo>
-          <MovieInfo>Type : Movie</MovieInfo>
+          <MovieInfo>Year : {Year}</MovieInfo>
+          <MovieInfo>Type : {Type}</MovieInfo>
       </InfoColumn>
     </MovieComponentContainer>
     );
