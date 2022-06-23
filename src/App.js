@@ -34,7 +34,7 @@ const Searchbox = styled.div`
 display : flex;
 flex-direction : row;
 padding : 10px 10px;
-background-color : #F5F5F5;
+background-color : #EDF5E1;
 border-radius : 6px;
 width : 50%;
 margin-left : 20px;
@@ -48,7 +48,7 @@ color : #05386B !important;
 
 const SearchInput = styled.input`
 color : #05386B;
-background-color : #F5F5F5;
+background-color : #EDF5E1;
 font-size : 13px;
 width : 1000%;
 border : none;
@@ -103,10 +103,15 @@ const searchHandler = (event) =>
         <SearchInput placeholder='Search for a movie'  value={searchQuery} onChange={searchHandler} />
       </Searchbox>
       </Header>
-        {selectedMovie && <MovieDetailsComponent selectedMovie = {selectedMovie} />}
+      {selectedMovie && <MovieDetailsComponent selectedMovie = {selectedMovie} />}
+      
       <MovieContainer>
-         {(movieList.length != 0 )
-         ? movieList.map((movie,index) => <MovieComponent key={index} movie={movie} onMovieSelect={onMovieSelect}/>)
+         {(movieList.length)
+         ? movieList.map((movie,index) =>
+          <MovieComponent
+          key={index} 
+          movie={movie} 
+          onMovieSelect={onMovieSelect}/>)
          : " No Movies Found" } 
       </MovieContainer>
   </Container>

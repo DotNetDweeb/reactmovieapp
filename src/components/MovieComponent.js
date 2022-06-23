@@ -46,9 +46,12 @@ justify-content : space-between;
 `
 
 function MovieComponent(props){
-  const{Title, Year, imdbId, Type, Poster} = props.movie;
+  const{Title, Year, imdbID, Type, Poster} = props.movie;
     return (
-    <MovieComponentContainer onClick={() => props.onMovieSelect(imdbId)}>
+    <MovieComponentContainer onClick={() => {
+      props.onMovieSelect(imdbID);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }}>
       <CoverImg src={Poster}/> 
       <MovieName>{Title}</MovieName>
       <InfoColumn>
