@@ -1,8 +1,22 @@
-# specific branch build
-trigger:
-  branches:
-    include:
-    - master
-    - releases/*
-    exclude:
-    - releases/old*
+parameters:
+- name: envs
+  type: object
+  default:
+  - QUAL
+  - PROD
+  - PREPROD
+
+stages:
+- ${{ each env in parameters.envs }}:
+  - stage: ${{ env }}
+    displayName: 'Stage ${{ env }}'
+    jobs:
+    - job: job1
+      displayName: 'Job 1'
+      steps:
+      - bash: echo "Current job is job1 in ${{ env }}"
+    
+    - job: job2
+      displayName: 'Job 2'
+      steps:
+      - bash: echo "Current job is job2 in ${{ env }}"
